@@ -25,16 +25,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', async function(req, res){
          var config = {
         container_id: "viz",
-        server_url:"",
-        server_user: "",
-        server_password: "",
+        server_url:"bolt://329d7fe5.databases.neo4j.io",
+        server_user: "neo4j",
+        server_password: "ODTh9yjO_OwR0cZxNy5oY8hkLOt84dDpFw1A9-ibuLA",
         labels: {
-          
+            "Producto":{
+                caption:"producto",
+                size:"pagerank",
+                community:"community"
+            },
+            "Administracion":{
+                caption: "via administracion",
+            }
         },
         relationships: {
+            "IS_CONTAINED":{
+                thickness:"weight"
+            }
        
         },
-        initial_cypher: ``,
+        initial_cypher: `LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/LadyWinehouse/PoC-Colombia-/main/CSV/L%20-%20AGENTES%20ANTINEOPLASICOS%20E%20INMUNOMODULADORES%20-%20TRATADO%20-%20NEO4J.xlsx%20-%20Sheet1.csv" AS row
+        MATCH (p:Producto {producto:row.producto})
+        RETURN p`,
 
         encrypted: "ENCRYPTION_OFF",
         trust: "TRUST_SYSTEM_CA_SIGNED_CERTIFICATES"
