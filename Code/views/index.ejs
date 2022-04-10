@@ -19,17 +19,8 @@
         #viz {
             width: 900px;
             height: 700px;
+            border: 1px solid lightgray;
             font: 22pt arial;
-            
-        }
-        #searchbar{
-            width:90vh;
-            height: 8vh;
-            margin-left: 50vh;
-            margin-right: 50vh;
-            background-color: black;
-            color:white;
-            text-align: center;
         }
     </style>
     <script src="https://cdn.neo4jlabs.com/neovis.js/v1.5.0/neovis.js"></script>
@@ -47,7 +38,8 @@
     }
 </script>
 </head>
-<body onload="draw()" id="viz">
+<body onload="draw()">
+    <div id="viz"></div>
 </body>
  
 </html>

@@ -25,33 +25,93 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', async function(req, res){
          var config = {
         container_id: "viz",
-        server_url:"bolt://329d7fe5.databases.neo4j.io",
+        server_url:"bolt://81be9d2a.databases.neo4j.io",
         server_user: "neo4j",
-        server_password: "ODTh9yjO_OwR0cZxNy5oY8hkLOt84dDpFw1A9-ibuLA",
+        server_password: "YwDLFYIdfoKfFZUcbOIKRwh-7xtZC8bz1hbrzgNpUKs",
         labels: {
-            "Producto":{
-                caption:"producto",
-                size:"pagerank",
-                community:"community"
+            "Producto": {
+                "caption": "producto",
+                "size": "pagerank",
+                "community": "community"
             },
-            "Administracion":{
-                caption: "via administracion",
+            "Tipo_Reporte_Precio":{
+                "caption": "tipo_reporte_precio",
+                "community": "community"
+            },
+            "Unidades":{
+                "caption": "unidades",
+                "size":"pagerank",
+                "community": "community"
+            },
+            "Fecha":{
+                "caption":"fecha",
+                "community":"community"
+            },
+            "Pais":{
+                "caption":"pais"
+            },
+            "Departamento":{
+                "caption":"departamento"
+            },
+            "Municipio":{
+                "caption":"departamento"
+            },
+            "Estado_Cum":{
+                "caption":"estado_cum"
+            },
+            "Estado_del_Registro":{
+                "caption":"estado_del_registro"
+            },
+            "Tercer_Nivel":{
+                "caption":"tercer_nivel"
+            },
+            "Via_de_Administracion":{
+                "caption":"via_administracion"
+            },
+            "Grupo_Anatomico":{
+                "caption":"grupo_anatomico"
+            },
+            "Medicamento":{
+                "caption":"medicamento"
+            },
+            "Principio_Activo":{
+                "caption":"principio_activo"
+            },
+            "Subgrupo_Farmacologico":{
+                "caption":"subgrupo_farmacologico"
+            },
+            "Subgrupo_Quimico":{
+                "caption":"subgrupo_quimico"
+            },
+            "Subgrupo_Terapeutico":{
+                "caption":"subgrupo_terapeutico"
+            },
+            "Tipo Entidad":{
+                "caption":"tipo entidad"
+            },
+            "Normalizado":{
+                "caption":"normalizado"
+            },
+            "Valor_Total":{
+                "caption":"valor_total",
+                "size":"pagerank"
+            },
+            "Valor_Medio":{
+                "caption":"valor_medio",
+                "size":"pagerank"
             }
         },
         relationships: {
-            "IS_CONTAINED":{
-                thickness:"weight"
-            }
-       
+            "CONTIENE": {
+                "thickness": "weight"
+            }   
         },
         initial_cypher: `LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/LadyWinehouse/PoC-Colombia-/main/CSV/L%20-%20AGENTES%20ANTINEOPLASICOS%20E%20INMUNOMODULADORES%20-%20TRATADO%20-%20NEO4J.xlsx%20-%20Sheet1.csv" AS row
-        MATCH (p:Producto {producto:row.producto})
-        RETURN p`,
-
+        MATCH (n) RETURN (n) `,
         encrypted: "ENCRYPTION_OFF",
         trust: "TRUST_SYSTEM_CA_SIGNED_CERTIFICATES"
     };
-//SET linhas após o titulo, renomear label atual 
+
     res.render('index', {configs: config});
 })
 
