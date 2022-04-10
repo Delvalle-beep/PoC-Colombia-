@@ -32,7 +32,8 @@ app.get('/', async function(req, res){
             "Producto": {
                 "caption": "producto",
                 "size": "pagerank",
-                "community": "community"
+                "community": "community",
+                sizeCypher:``
             },
             "Tipo_Reporte_Precio":{
                 "caption": "tipo_reporte_precio",
@@ -41,7 +42,8 @@ app.get('/', async function(req, res){
             "Unidades":{
                 "caption": "unidades",
                 "size":"pagerank",
-                "community": "community"
+                "community": "community",
+                sizeCypher:``
             },
             "Fecha":{
                 "caption":"fecha",
@@ -55,12 +57,6 @@ app.get('/', async function(req, res){
             },
             "Municipio":{
                 "caption":"departamento"
-            },
-            "Estado_Cum":{
-                "caption":"estado_cum"
-            },
-            "Estado_del_Registro":{
-                "caption":"estado_del_registro"
             },
             "Tercer_Nivel":{
                 "caption":"tercer_nivel"
@@ -94,20 +90,23 @@ app.get('/', async function(req, res){
             },
             "Valor_Total":{
                 "caption":"valor_total",
-                "size":"pagerank"
+                "size":"pagerank",
+                sizeCypher:``
             },
             "Valor_Medio":{
                 "caption":"valor_medio",
-                "size":"pagerank"
+                "size":"pagerank",
+                sizeCypher:``
             }
         },
         relationships: {
             "CONTIENE": {
                 "thickness": "weight"
-            }   
+            }
         },
+        arrows: true,
         initial_cypher: `LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/LadyWinehouse/PoC-Colombia-/main/CSV/L%20-%20AGENTES%20ANTINEOPLASICOS%20E%20INMUNOMODULADORES%20-%20TRATADO%20-%20NEO4J.xlsx%20-%20Sheet1.csv" AS row
-        MATCH (n) RETURN (n) `,
+        MATCH p=()-->() RETURN p LIMIT 300`,
         encrypted: "ENCRYPTION_OFF",
         trust: "TRUST_SYSTEM_CA_SIGNED_CERTIFICATES"
     };
