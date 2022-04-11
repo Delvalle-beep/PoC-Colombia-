@@ -33,7 +33,7 @@ app.get('/', async function(req, res){
                 "caption": "producto",
                 "size": "pagerank",
                 "community": "community",
-                sizeCypher:``
+                sizeCypher:`MATCH (n) WHERE id(n) = $id MATCH (n)-[r]-() RETURN sum(r.weight) AS c`
             },
             "Tipo_Reporte_Precio":{
                 "caption": "tipo_reporte_precio",
@@ -43,7 +43,7 @@ app.get('/', async function(req, res){
                 "caption": "unidades",
                 "size":"pagerank",
                 "community": "community",
-                sizeCypher:``
+                sizeCypher:`MATCH (n) WHERE id(n) = $id MATCH (n)-[r]-() RETURN sum(r.weight) AS c`
             },
             "Fecha":{
                 "caption":"fecha",
@@ -91,12 +91,12 @@ app.get('/', async function(req, res){
             "Valor_Total":{
                 "caption":"valor_total",
                 "size":"pagerank",
-                sizeCypher:``
+                sizeCypher:`MATCH (n) WHERE id(n) = $id MATCH (n)-[r]-() RETURN sum(r.weight) AS c`
             },
             "Valor_Medio":{
                 "caption":"valor_medio",
                 "size":"pagerank",
-                sizeCypher:``
+                sizeCypher:`MATCH (n) WHERE id(n) = $id MATCH (n)-[r]-() RETURN sum(r.weight) AS c`
             }
         },
         relationships: {
